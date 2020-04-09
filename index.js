@@ -28,7 +28,8 @@ promptUser()
 
           // const repoNamesStr = repoNames.join('\n')
 
-          appendFileP('newReadme.md', `![Profile img](${profileImg})` , function (err) {
+          appendFileP('newReadme.md', `![Profile img](${profileImg})\n\nE-mail: Hidden
+          ` , function (err) {
             if (err) {
               throw err
             }
@@ -38,23 +39,12 @@ promptUser()
           })
         })
   })
-    console.log('')
+    console.log('Saved')
   })
   
   .catch(function (err) {
     console.error(err)
   })
-
-// axios
-// const queryUrl = `https://api.github.com/users/${answers.github}` 
-
-// axios.get(queryUrl).then(function (res) {
-//   const gitImage = res.data.avatar_url
-
-  
-
-  
-// })
 
 // Functions
 function promptUser () {
@@ -62,27 +52,32 @@ function promptUser () {
     {
       type: 'input',
       name: 'name',
-      message: 'What the name of your project?'
+      message: 'What the name of your project?',
+      default: 'Project Title'
     },
     {
       type: 'input',
       name: 'description',
-      message: 'Describe your project?'
+      message: 'Describe your project?',
+      default: 'Description of your project'
     },
     {
       type: 'input',
       name: 'installation',
-      message: 'How do you install your application?'
+      message: 'How do you install your application?',
+      default: 'Installation steps'
     },
     {
       type: 'input',
       name: 'usage',
-      message: 'How do you use this app?'
+      message: 'How do you use this app?',
+      default: 'Usage of the app'
     },
     {
       type: 'input',
       name: 'test',
-      message: 'Add all the tests you did on this app'
+      message: 'Add all the tests you did on this app',
+      default: 'None'
     }
   ])
   
@@ -100,8 +95,10 @@ function generateReadme (answers) {
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
+  * [Contributing](#contributing)
   * [License](#license)
+  * [Badges](#badges)
+  * [Questions](#questions)
   
    
   # Installation
@@ -111,19 +108,19 @@ function generateReadme (answers) {
    ${answers.usage}
 
   # License
+  ![License](https://img.shields.io/github/license/diegolehyt/homework9)
+
+  # Badges
   ![Diego](https://img.shields.io/badge/clean-code-purple)
   ![nvm version](https://img.shields.io/badge/version-v0.35.3-yellow.svg)
   ![Travis CI](https://travis-ci.com/diegolehyt/homework9.svg?branch=master)
-  ![License](https://img.shields.io/github/license/diegolehyt/homework9)
+
   # Contributing
   [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
   # Test
    ${answers.test}
-  # Questions
-
-  E-mail: Hidden
-
+  # Questions  
 `
 }
 
