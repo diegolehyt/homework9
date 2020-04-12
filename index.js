@@ -1,9 +1,13 @@
-// const for project
+//---------------------------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------\ Readme Generator - Homework 9 /----------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------\ Const for project /-----------------------------------------------------
 const axios = require('axios')
 const inquirer = require('inquirer')
 const util = require('util')
 const fs = require('fs')
-
+// Promisify
 const writeFileP = util.promisify(fs.writeFile)
 const appendFileP = util.promisify(fs.appendFile)
 
@@ -11,35 +15,55 @@ const appendFileP = util.promisify(fs.appendFile)
 promptUser()
   .then(function (answers) {
     
-    const html = generateReadme(answers)
-    return writeFileP('newReadme.md', html)
+    const readme = generateReadme(answers)
+    return writeFileP('newReadme.md', readme)
   })
   .then(function () {
-    // Axios
+    //-----------------------------------------------------\ Axios /-----------------------------------------------------
     inquirer
       .prompt([{
         message: '\nEnter your GitHub username:',
         name: 'username'
       },
       {
-        message: 'Enter your GitHub repository name:',
+        message: 'Enter Github repository name:',
         name: 'repo'
+      },
+      {
+        message: 'Would you like to include the MIT license, inside this project? (type "yes" to accept)',
+        name: 'ans',
+        default: 'no'
       }
     ])
-      .then(function ({ username, repo }) {
+      .then(function ({ username, repo, ans }) {
         const queryUrl = `https://api.github.com/users/${username}`
 
         axios.get(queryUrl).then(function (res) {
           const profileImg = res.data.avatar_url
+          const fullname = res.data.name
 
 
-          appendFileP('newReadme.md', `![code size](https://img.shields.io/github/languages/code-size/${username}/${repo}) ![last comit](https://img.shields.io/github/languages/top/${username}/${repo}) ![last comit](https://img.shields.io/github/last-commit/${username}/${repo})\n# License\nThis project is under the MIT License.![License](https://img.shields.io/github/license/${username}/${repo})\n# Questions \n\n![Profile img](${profileImg})\n\nE-mail: Hidden` , function (err) {
+          appendFileP('newReadme.md', generateBadges(username, repo, profileImg), function (err) {
             if (err) {
               throw err
             }
 
           })
-          console.log(`Succed creating the file newReadme.md`)
+
+          if (ans === "yes" ){
+            writeFileP('LICENSE.txt', generateLICENSE(fullname),function (err) {
+              if (err) {
+                throw err
+              }
+              
+            })
+            console.log('\x1b[92mSucced!, LICENSE.txt file was created\x1b[39m')
+          }
+          else{
+            console.log('\x1b[91mRejeted!, LICENSE.txt file was not created\x1b[39m')
+          }
+
+          console.log(`\x1b[92mSucced!, newReadme.md file was created\x1b[39m`)
         })
   })
     console.log('')
@@ -49,9 +73,15 @@ promptUser()
     console.error(err)
   })
 
-// Functions
+//-----------------------------------------------------\ Functions /-----------------------------------------------------
 function promptUser () {
   return inquirer.prompt([
+    {
+      type: 'text',
+      name: 'intro message',
+      message: "\x1b[95mWelcome to Readme GENERATOR!\x1b[39m" + "\x1b[36m\nAnswer the following questions, in order to create your new Readme File. \nIf you don't answer a question, a default value will be assigned.\nFor badges and MIT license, make sure you insert the correct Github name of your repo.\n>>>> Hit ENTER to get started <<<<\x1b[89m",
+      
+    },
     {
       type: 'input',
       name: 'name',
@@ -93,11 +123,9 @@ function promptUser () {
 }
 
 function generateReadme (answers) {
-  return `
-  # Project Title
-   ${answers.name}
-
-  # Table of Content
+  return `# ${answers.name}
+   
+  ## Table of Content
 
   * [Description](#description)
   * [Installation](#installation)
@@ -108,22 +136,69 @@ function generateReadme (answers) {
   * [License](#license)
   * [Questions](#questions)
 
-  # Description
+  ## Description
    ${answers.description} 
 
-  # Installation
+  ## Installation
    ${answers.installation}
 
-  # Usage
+  ## Usage
    ${answers.usage}
 
-  # Test
+  ## Test
   ${answers.test}
-  
-  # Contributing
-  This project is under the Contributor Covenant. [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
-  # Badges
-  ![Diego](https://img.shields.io/badge/version-${answers.version}-purple) `
+  ## Badges
+  ![Diego](https://img.shields.io/badge/version-${answers.version}-yellow) `
 }
+
+function generateLICENSE (fullname) {
+  return `
+  MIT License
+
+  Copyright (c) 2020 ${fullname}
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+  `
+}
+
+function generateBadges (username, repo, profileImg) {
+  return `
+  ![code size](https://img.shields.io/github/languages/code-size/${username}/${repo})
+  ![last comit](https://img.shields.io/github/languages/top/${username}/${repo})
+  ![last comit](https://img.shields.io/github/last-commit/${username}/${repo})
+  
+  ## License ![License](https://img.shields.io/github/license/${username}/${repo})
+  This project is under the MIT License.
+  
+  ## Contributing [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+  This project is under the Contributor Covenant.
+
+  ## Questions ![Social](https://img.shields.io/github/followers/${username}?style=social) 
+  ![Profile img](${profileImg})
+
+  E-mail: Hidden
+  `
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------\  END  /---------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------------
+
 
