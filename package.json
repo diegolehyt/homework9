@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vows test/*.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,6 @@
     "inquirer": "^7.1.0"
   },
   "devDependencies": {
-    "vows": "latest"
+    "jest": "^24.9.0"
   }
 }

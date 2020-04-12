@@ -181,9 +181,10 @@ function generateLICENSE (fullname) {
 function generateBadges (username, repo, profileImg) {
   return `
   ![code size](https://img.shields.io/github/languages/code-size/${username}/${repo})
-  ![last comit](https://img.shields.io/github/languages/top/${username}/${repo})
+  ![top lang](https://img.shields.io/github/languages/top/${username}/${repo})
   ![last comit](https://img.shields.io/github/last-commit/${username}/${repo})
-  
+  ![vulnera](https://img.shields.io/snyk/vulnerabilities/github/${username}/${repo})
+
   ## License ![License](https://img.shields.io/github/license/${username}/${repo})
   This project is under the MIT License.
   

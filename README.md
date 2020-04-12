@@ -1,4 +1,4 @@
-# Readme Generator 🏅 ![Diego](https://img.shields.io/badge/version-v1.0.0-yellow) ![code size](https://img.shields.io/github/languages/code-size/diegolehyt/homework9) ![language](https://img.shields.io/github/languages/top/diegolehyt/homework9) ![Travis CI](https://api.travis-ci.org/dwyl/learn-travis.svg?branch=master) ![last comit](https://img.shields.io/github/last-commit/diegolehyt/homework9)
+# Readme Generator 🏅 ![Diego](https://img.shields.io/badge/version-v1.0.0-yellow) ![code size](https://img.shields.io/github/languages/code-size/diegolehyt/homework9) ![language](https://img.shields.io/github/languages/top/diegolehyt/homework9) ![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/diegolehyt/homework9) ![last comit](https://img.shields.io/github/last-commit/diegolehyt/homework9)
 Homework - 9
 
 ![Main Page](images/0.gif)
@@ -61,7 +61,7 @@ Answer all the prompt Questions (or you will get the Default value), plus your G
 
 ## 📊Test
  ```
- npm run test (for Travis CI).
+ npm run test (jest).
  ```
 
 ## 🤝Contributing [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
