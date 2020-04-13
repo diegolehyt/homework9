@@ -14,7 +14,6 @@ Homework - 9
 * [Usage](#usage)
 * [Test](#test)
 * [Contributing](#contributing)
-* [Usage](#usage)
 * [License](#license)
 * [Details](#details)
 * [Features](#features)
@@ -64,10 +63,10 @@ Answer all the prompt Questions (or you will get the Default value), plus your G
  npm run test (none).
  ```
 
-## 🤝Contributing [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
+## 🤝Contributing  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 Feel free to pull request and give me your suggestions if any. This project is under the Contributor Covenant.
           
-## ⚖️License ![License](https://img.shields.io/github/license/diegolehyt/homework9)
+## ⚖️License  ![License](https://img.shields.io/github/license/diegolehyt/homework9)
 This project is under the MIT License.
 ![License](images/1.png)
 
@@ -76,12 +75,12 @@ This project is under the MIT License.
 This repository content the html files: index "main page", the CSS styles "style.css", the JavaScript "script.js", mit license"LICENSE.txt", "package.json" and an "image" folder with the captures for this Readme File.
 
 ## 📀Features
-If you would like to have the MIT License, this Generator also let you include the LICENSE.txt with your name and date on it.
+- If you would like to have the MIT License, this Generator also let you include the LICENSE.txt with your name and date on it.
 ![Features](images/2.png)
 ![Features2](images/3.png)
 ![Features3](images/4.png)
 
-Unique project "version" badge
+- Unique project "version" badge
 <<< ![Diego](https://img.shields.io/badge/version-v1.0.0-yellow) >>>
 
 ## 🔗URL 

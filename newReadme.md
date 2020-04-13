@@ -29,13 +29,15 @@
   ![last comit](https://img.shields.io/github/languages/top/diegolehyt/homework9)
   ![last comit](https://img.shields.io/github/last-commit/diegolehyt/homework9)
   
-  ## License ![License](https://img.shields.io/github/license/diegolehyt/homework9)
-  This project is under the MIT License.
+  ## License 
+  This project is under the MIT License. ![License](https://img.shields.io/github/license/diegolehyt/homework9)
   
-  ## Contributing [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
-  This project is under the Contributor Covenant.
+  ## Contributing 
+  This project is under the Contributor Covenant. [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
-  ## Questions ![Social](https://img.shields.io/github/followers/diegolehyt?style=social) 
+  ## Questions 
+  ![Social](https://img.shields.io/github/followers/diegolehyt?style=social) 
+  
   ![Profile img](https://avatars1.githubusercontent.com/u/59458188?v=4)
 
   E-mail: Hidden
