@@ -72,7 +72,7 @@ This project is under the MIT License.
 
 ## 📑Details
 
-This repository content the html files: index "main page", the CSS styles "style.css", the JavaScript "script.js", mit license"LICENSE.txt", "package.json" and an "image" folder with the captures for this Readme File.
+This repository content the files: JavaScript "index.js", Mit license"LICENSE.txt", "package.json", "package-lock.json", readme generated "newReadme.md", "node_modules" folder and an "image" folder with the captures and gifs for this Readme File.
 
 ## 📀Features
 - If you would like to have the MIT License, this Generator also let you include the LICENSE.txt with your name and date on it.
